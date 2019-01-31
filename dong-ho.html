@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tạo đồng hồ bằng Javascript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-color: aqua;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            background: url(bg.jpg) no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        body::after {
+            content: "";
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+            z-index: -1;
+        }
+
+        .dong-ho {
+            width: 250px;
+            height: 250px;
+            border: 10px solid #fff;
+            border-radius: 50%;
+            padding: 20px;
+            position: absolute;
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, .1), inset 0 0 0 3px #fff, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+            background: url(2784a0e45470b72eee61.jpg) no-repeat center center;
+            box-sizing: border-box;
+            background-size: cover;
+            top: 50%;
+            left: 50%;
+            margin: -150px -125px;
+        }
+
+        .mat-truoc {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .kim {
+            width: 50%;
+            height: 6px;
+            background-color: #7e2020;
+            position: absolute;
+            top: 50%;
+            transform-origin: 100%;
+            right: 50%;
+            transition: all 0.5s;
+            transition-timing-function: step-end;
+            transform: rotate(90deg);
+        }
+
+        span.kim.kim-phut {
+            width: 30%;
+        }
+
+        span.kim.kim-gio {
+            width: 25%;
+        }
+
+        span.so {
+            position: absolute;
+            top: -16px;
+            color: #fe9300cc;
+            font-size: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        span.so3 {
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+        }
+
+        span.so.so6 {
+            top: 95%;
+        }
+
+        span.so9 {
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        h1.title {
+            position: absolute;
+            width: 100%;
+            bottom: 50%;
+            left: 50%;
+            transform: translate3d(-50%, 165px, 0);
+            font-size: 28px;
+            font-family: arial;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+        }
+
+        h1.title span {
+            color: red;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <!-- Clock -->
+    <div class="dong-ho">
+        <div class="mat-truoc">
+            <span class="so so12">12</span>
+            <span class="so so3">3</span>
+            <span class="so so6">6</span>
+            <span class="so so9">9</span>
+            <span class="kim kim-gio"></span>
+            <span class="kim kim-phut"></span>
+            <span class="kim kim-giay"></span>
+        </div>
+    </div>
+
+    <h1 class="title"> <span>❤❤❤</span> 我爱你 <span>❤❤❤</span> </h1>
+    <!-- Clock End: -->
+
+    <!-- Javascript -->
+    <script>
+
+        // Select kim đồng hồ 
+        const kimGiay = document.querySelector('.kim-giay');
+        const kimPhut = document.querySelector('.kim-phut');
+        const kimGio = document.querySelector('.kim-gio');
+
+        // Set thời gian thực
+        function setDate() {
+            //lấy số giây
+            const hienTai = new Date();
+            const giay = hienTai.getSeconds();
+            const doChinhXacCuaGiay = ((giay / 60) * 360) + 90;
+            kimGiay.style.transform = `rotate(${doChinhXacCuaGiay}deg)`;
+
+            // lấy số phút
+            const phut = hienTai.getMinutes();
+            const doChinhXacCuaPhut = ((phut / 60) * 360) + 90;
+            kimPhut.style.transform = `rotate(${doChinhXacCuaPhut}deg)`;
+
+            // lấy số giờ
+            const gio = hienTai.getHours();
+            const doChinhXacCuaGio = ((gio / 12) * 360) + 90;
+            kimGio.style.transform = `rotate(${doChinhXacCuaGio}deg)`;
+        }
+
+        // sét 1s chạy 
+        setInterval(setDate, 1000);
+    </script>
+</body>
+
+</html>
