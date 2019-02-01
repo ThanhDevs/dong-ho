@@ -153,8 +153,9 @@
         const kimPhut = document.querySelector('.kim-phut');
         const kimGio = document.querySelector('.kim-gio');
 
-        // Set thời gian thực
-        function setDate() {
+        // Thời gian thực
+        function ThoiGian() {
+
             //lấy số giây
             const hienTai = new Date();
             const giay = hienTai.getSeconds();
@@ -172,8 +173,8 @@
             kimGio.style.transform = `rotate(${doChinhXacCuaGio}deg)`;
         }
 
-        // sét 1s chạy 
-        setInterval(setDate, 1000);
+        // 1 giây sẽ thực hiện  
+        setInterval(ThoiGian, 1000);
     </script>
 </body>
 
